@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 export default function WishList() {
   return (
-    <Link to={'/wishList'}>
-      <FaRegHeart style={{ width: '25px', height: '25px' }} />
+    <Link to={'/wishList'} style={{ color: 'black' }}>
+      <FaRegHeart style={{ width: '20px', height: '20px' }} />
     </Link>
   );
 }

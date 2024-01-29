@@ -1,10 +1,11 @@
 import React from 'react';
 import { CgShoppingCart } from 'react-icons/cg';
+import { Link } from 'react-router-dom';
 
 export default function ShoppingBasket() {
   return (
-    <div>
-      <CgShoppingCart style={{ width: '25px', height: '25px' }} />
-    </div>
+    <Link to={'/shoppingList'} style={{ color: 'black' }}>
+      <CgShoppingCart style={{ width: '20px', height: '20px' }} />
+    </Link>
   );
 }

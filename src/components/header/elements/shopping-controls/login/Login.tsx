@@ -1,10 +1,6 @@
 import React from 'react';
-import { GoPerson } from 'react-icons/go';
+import styles from './Login.module.css';
 
 export default function Login() {
-  return (
-    <div>
-      <GoPerson style={{ width: '25px', height: '25px' }} />
-    </div>
-  );
+  return <div className={styles.font}>Login</div>;
 }
