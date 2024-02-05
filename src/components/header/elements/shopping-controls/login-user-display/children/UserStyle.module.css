@@ -1,0 +1,5 @@
+.img-style {
+  width: var(--button-width);
+  height: var(--button-height);
+  border-radius: 9999px;
+}

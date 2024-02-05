@@ -3,15 +3,16 @@ import styles from './Login.module.css';
 import { login, logout } from '../../../../../backEnd/fireBase';
 import { loginState } from '../../../../../context/LoginContext';
 
-export default function Login() {
+export default function LoginAndOut() {
   const { loginChecked, setLoginChecked } = useContext(loginState);
+  console.log('state', loginChecked);
   return (
     <div className={styles.font}>
       {loginChecked ? (
         <div
           onClick={async () => {
             await logout().then(res => {
-              setLoginChecked(!loginChecked);
+              setLoginChecked(false);
             });
           }}
         >
@@ -21,7 +22,8 @@ export default function Login() {
         <div
           onClick={async () => {
             await login().then(res => {
-              setLoginChecked(!loginChecked);
+              console.log('요청 후', res);
+              setLoginChecked(res);
             });
           }}
         >

@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './ShoppingControls.module.css';
 import WishList from './wish-list/WishList';
 import ShoppingBasket from './shopping-basket/ShoppingBasket';
-import Login from './login/Login';
 import ItemEditor from './Item-editor/ItemEditor';
+import { loginState } from '../../../../context/LoginContext';
+import LoginAndOut from './login-and-out/LoginAndOut';
+import LoginUserDisplay from './login-user-display/LoginUserDisplay';
 
 export default function ShoppingControls() {
+  const { loginChecked } = useContext(loginState);
   return (
     <div className={styles.container}>
       <WishList />
       <ShoppingBasket />
-      <ItemEditor />
-      <Login />
+      {loginChecked && <ItemEditor />}
+      {loginChecked && <LoginUserDisplay />}
+      <LoginAndOut />
     </div>
   );
 }

@@ -44,10 +44,14 @@ export async function setData() {
 }
 
 export async function login() {
-  await signInWithPopup(auth, provider) //
+  return await signInWithPopup(auth, provider) //
     .then(result => {
-      console.log(result);
-      console.log(result.user);
+      const user = result.user;
+      return {
+        userName: user.displayName,
+        userProfileURL: user.photoURL,
+        uid: user.uid,
+      };
     })
     .catch(error => {
       // Handle Errors here.

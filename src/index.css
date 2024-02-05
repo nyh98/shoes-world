@@ -4,6 +4,8 @@
   --button-color: black;
   --button-transition: all 0.2s linear;
   --button-hover-transform: scale(1.4);
+  --header-font: 'Times New Roman', Times, serif;
+  --header-font-weight: 800;
 }
 
 .img-size {
@@ -29,5 +31,11 @@ body {
 @media (min-width: 768px) {
   #root {
     width: 80%;
+  }
+}
+
+@media (max-width: 640px) {
+  #userName {
+    display: none;
   }
 }
