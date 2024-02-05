@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 export default function WishList() {
   return (
     <Link to={'/wishList'} className={styles.button}>
-      <FaRegHeart style={{ width: '20px', height: '20px' }} />
+      <FaRegHeart className={styles['img-size']} />
     </Link>
   );
 }

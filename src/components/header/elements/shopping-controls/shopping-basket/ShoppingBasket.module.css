@@ -4,6 +4,12 @@
   display: flex;
   justify-content: center;
 }
+
 .button:hover {
   transform: scale(1.4);
+}
+
+.img-size {
+  width: var(--button-width);
+  height: var(--button-height);
 }
