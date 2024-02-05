@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import LoginContext from './context/LoginContext';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <LoginContext>
+      <RouterProvider router={router} />
+    </LoginContext>
   </React.StrictMode>
 );
 
