@@ -1,11 +1,11 @@
 .font {
   font-family: 'Times New Roman', Times, serif;
   font-weight: 800;
-  color: black;
-  transition: all 0.2s linear;
+  color: var(--button-color);
+  transition: var(--button-transition);
 }
 
 .font:hover {
   cursor: pointer;
-  transform: scale(1.4);
+  transform: var(--button-hover-transform);
 }

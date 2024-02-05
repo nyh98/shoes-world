@@ -1,6 +1,14 @@
 :root {
   --button-width: 20px;
   --button-height: 20px;
+  --button-color: black;
+  --button-transition: all 0.2s linear;
+  --button-hover-transform: scale(1.4);
+}
+
+.img-size {
+  width: var(--button-width);
+  height: var(--button-height);
 }
 
 body {

@@ -1,12 +1,12 @@
 .button {
-  color: black;
-  transition: all 0.2s linear;
+  color: var(--button-color);
+  transition: var(--button-transition);
   display: flex;
   justify-content: center;
 }
 
 .button:hover {
-  transform: scale(1.4);
+  transform: var(--button-hover-transform);
 }
 
 .img-size {
