@@ -4,14 +4,12 @@ import UserName from './children/UserName';
 import { loginState } from '../../../../../context/LoginContext';
 
 export default function LoginUserDisplay() {
-  const { loginChecked } = useContext(loginState);
+  const { isLogin } = useContext(loginState);
 
   return (
     <>
-      {loginChecked && (
-        <UserProfile userProfileURL={loginChecked.userProfileURL} />
-      )}
-      {loginChecked && <UserName userName={loginChecked.userName} />}
+      {isLogin && <UserProfile userProfileURL={isLogin.userProfileURL} />}
+      {isLogin && <UserName userName={isLogin.userName} />}
     </>
   );
 }

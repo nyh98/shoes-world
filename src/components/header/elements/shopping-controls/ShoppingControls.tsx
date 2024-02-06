@@ -8,13 +8,13 @@ import LoginAndOut from './login-and-out/LoginAndOut';
 import LoginUserDisplay from './login-user-display/LoginUserDisplay';
 
 export default function ShoppingControls() {
-  const { loginChecked } = useContext(loginState);
+  const { isLogin } = useContext(loginState);
   return (
     <div className={styles.container}>
       <WishList />
       <ShoppingBasket />
-      {loginChecked !== null && loginChecked.admin ? <ItemEditor /> : ''}
-      {loginChecked && <LoginUserDisplay />}
+      {isLogin?.admin ? <ItemEditor /> : ''}
+      {isLogin && <LoginUserDisplay />}
       <LoginAndOut />
     </div>
   );

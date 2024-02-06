@@ -45,13 +45,14 @@ export async function login() {
   return await signInWithPopup(auth, provider) //
     .then(async result => {
       const admins = await getData('users', 'admins');
-      const user = result.user;
-      return {
-        userName: user.displayName,
-        userProfileURL: user.photoURL,
-        uid: user.uid,
-        admin: admins?.ids.includes(user.uid),
+      const user = {
+        userName: result.user.displayName,
+        userProfileURL: result.user.photoURL,
+        uid: result.user.uid,
+        admin: admins?.ids.includes(result.user.uid),
       };
+      localStorage.setItem('user', JSON.stringify(user));
+      return user;
     })
     .catch(error => {
       // Handle Errors here.

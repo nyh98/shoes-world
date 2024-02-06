@@ -22,11 +22,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <>메인페이지</>,
+        element: <>메인 페이지</>,
       },
       {
         path: '/wishList/:uid',
-        element: <>찜목록 페이지</>,
+        element: <>찜목록</>,
       },
       {
         path: '/shoppingList/:uid',
