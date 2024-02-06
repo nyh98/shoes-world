@@ -5,14 +5,13 @@ import { loginState } from '../../../../../context/LoginContext';
 
 export default function LoginAndOut() {
   const { loginChecked, setLoginChecked } = useContext(loginState);
-  console.log('state', loginChecked);
   return (
     <div className={styles.font}>
       {loginChecked ? (
         <div
           onClick={async () => {
             await logout().then(res => {
-              setLoginChecked(false);
+              setLoginChecked(null);
             });
           }}
         >
@@ -22,7 +21,6 @@ export default function LoginAndOut() {
         <div
           onClick={async () => {
             await login().then(res => {
-              console.log('요청 후', res);
               setLoginChecked(res);
             });
           }}
