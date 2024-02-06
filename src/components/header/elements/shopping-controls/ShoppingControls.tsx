@@ -13,7 +13,7 @@ export default function ShoppingControls() {
     <div className={styles.container}>
       <WishList />
       <ShoppingBasket />
-      {loginChecked && <ItemEditor />}
+      {loginChecked !== null && loginChecked.admin ? <ItemEditor /> : ''}
       {loginChecked && <LoginUserDisplay />}
       <LoginAndOut />
     </div>

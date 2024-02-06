@@ -29,11 +29,10 @@ const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
 
-export async function getData() {
-  const titleRef = collection(db, 'title');
-  const docSnap = await getDoc(doc(titleRef, 'test'));
-  console.log(docSnap.data());
-  console.log(docSnap.exists());
+export async function getData(title: string, table: string) {
+  const titleRef = collection(db, title);
+  const docSnap = await getDoc(doc(titleRef, table));
+  return docSnap.data();
 }
 
 export async function setData() {
@@ -45,12 +44,14 @@ export async function setData() {
 
 export async function login() {
   return await signInWithPopup(auth, provider) //
-    .then(result => {
+    .then(async result => {
+      const admins = await getData('users', 'admins');
       const user = result.user;
       return {
         userName: user.displayName,
         userProfileURL: user.photoURL,
         uid: user.uid,
+        admin: admins?.ids.includes(user.uid),
       };
     })
     .catch(error => {

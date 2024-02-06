@@ -5,6 +5,13 @@ export interface Props {
 }
 
 export interface LoginContextDefault {
-  loginChecked: null | any;
+  loginChecked: null | User;
   setLoginChecked: Function;
+}
+
+interface User {
+  admin: boolean;
+  uid: string;
+  userName: string;
+  userProfileURL: string;
 }
