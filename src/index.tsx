@@ -19,7 +19,24 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    children: [{}],
+    children: [
+      {
+        path: '/',
+        element: <>메인페이지</>,
+      },
+      {
+        path: '/wishList/:uid',
+        element: <>찜목록 페이지</>,
+      },
+      {
+        path: '/shoppingList/:uid',
+        element: <>장바구니 페이지</>,
+      },
+      {
+        path: '/ItemEditor/:uid',
+        element: <>아이템 관리 페이지</>,
+      },
+    ],
   },
 ]);
 

@@ -5,6 +5,7 @@ import { loginState } from '../../../../../context/LoginContext';
 
 export default function LoginAndOut() {
   const { loginChecked, setLoginChecked } = useContext(loginState);
+  console.log(loginChecked);
   return (
     <div className={styles.font}>
       {loginChecked ? (

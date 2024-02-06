@@ -31,8 +31,7 @@ const auth = getAuth();
 
 export async function getData(title: string, table: string) {
   const titleRef = collection(db, title);
-  const docSnap = await getDoc(doc(titleRef, table));
-  return docSnap.data();
+  return await getDoc(doc(titleRef, table)).then(res => res.data());
 }
 
 export async function setData() {
