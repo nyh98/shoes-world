@@ -4,14 +4,14 @@ import { login, logout } from '../../../../../backEnd/fireBase';
 import { loginState } from '../../../../../context/LoginContext';
 
 export default function LoginAndOut() {
-  const { loginChecked, setLoginChecked } = useContext(loginState);
-  console.log(loginChecked);
+  const { isLogin, setLogin } = useContext(loginState);
+  console.log(isLogin);
   return (
     <div className={styles.font}>
-      {loginChecked ? (
+      {isLogin ? (
         <div
           onClick={async () => {
-            await logout().then(res => setLoginChecked(null));
+            await logout().then(res => setLogin(null));
           }}
         >
           Logout
@@ -19,7 +19,7 @@ export default function LoginAndOut() {
       ) : (
         <div
           onClick={async () => {
-            await login().then(res => setLoginChecked(res));
+            await login().then(res => setLogin(res));
           }}
         >
           Login

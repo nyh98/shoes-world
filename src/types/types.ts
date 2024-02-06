@@ -5,8 +5,8 @@ export interface Props {
 }
 
 export interface LoginContextDefault {
-  loginChecked: null | User;
-  setLoginChecked: Function;
+  isLogin: null | User;
+  setLogin: Function;
 }
 
 interface User {

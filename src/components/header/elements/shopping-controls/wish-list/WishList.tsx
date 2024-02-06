@@ -6,14 +6,14 @@ import { loginState } from '../../../../../context/LoginContext';
 import { login } from '../../../../../backEnd/fireBase';
 
 export default function WishList() {
-  const { loginChecked, setLoginChecked } = useContext(loginState);
+  const { isLogin, setLogin } = useContext(loginState);
 
-  if (!loginChecked) {
+  if (!isLogin) {
     return (
       <div
         className={styles.button}
         onClick={async () => {
-          await login().then(res => setLoginChecked(res));
+          await login().then(res => setLogin(res));
         }}
       >
         <FaRegHeart className={styles['img-size']} />
@@ -22,7 +22,7 @@ export default function WishList() {
   }
 
   return (
-    <Link to={`/wishList/${loginChecked?.uid}`} className={styles.button}>
+    <Link to={`/wishList/${isLogin?.uid}`} className={styles.button}>
       <FaRegHeart className={styles['img-size']} />
     </Link>
   );
