@@ -11,9 +11,7 @@ export default function LoginAndOut() {
       {loginChecked ? (
         <div
           onClick={async () => {
-            await logout().then(res => {
-              setLoginChecked(null);
-            });
+            await logout().then(res => setLoginChecked(null));
           }}
         >
           Logout
@@ -21,9 +19,7 @@ export default function LoginAndOut() {
       ) : (
         <div
           onClick={async () => {
-            await login().then(res => {
-              setLoginChecked(res);
-            });
+            await login().then(res => setLoginChecked(res));
           }}
         >
           Login

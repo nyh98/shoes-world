@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -45,11 +45,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <LoginContext>
+    <LoginContext>
+      <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
-      </LoginContext>
-    </QueryClientProvider>
+      </QueryClientProvider>
+    </LoginContext>
   </React.StrictMode>
 );
 

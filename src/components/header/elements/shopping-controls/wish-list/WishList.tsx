@@ -8,6 +8,19 @@ import { login } from '../../../../../backEnd/fireBase';
 export default function WishList() {
   const { loginChecked, setLoginChecked } = useContext(loginState);
 
+  if (!loginChecked) {
+    return (
+      <div
+        className={styles.button}
+        onClick={async () => {
+          await login().then(res => setLoginChecked(res));
+        }}
+      >
+        <FaRegHeart className={styles['img-size']} />
+      </div>
+    );
+  }
+
   return (
     <Link to={`/wishList/${loginChecked?.uid}`} className={styles.button}>
       <FaRegHeart className={styles['img-size']} />
