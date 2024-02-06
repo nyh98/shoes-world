@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import LoginContext from './context/LoginContext';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import WishListData from './pages/wish-list-data/WishListData';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/wishList/:uid',
-        element: <>찜목록</>,
+        element: <WishListData />,
       },
       {
         path: '/shoppingList/:uid',
