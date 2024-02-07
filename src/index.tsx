@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -7,10 +7,12 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import LoginContext from './context/LoginContext';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import WishListData from './pages/wish-list-data/WishListData';
+import NikeItems from './pages/nike/NikeItems';
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
+      staleTime: 1000 * 60 * 5,
       refetchOnWindowFocus: false,
     },
   },
@@ -23,7 +25,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <>메인 페이지</>,
+        element: <NikeItems />,
       },
       {
         path: '/wishList/:uid',
@@ -36,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: '/ItemEditor/:uid',
         element: <>아이템 관리 페이지</>,
+      },
+      {
+        path: '/itemDetail/:itemId',
+        element: <>아이템 상세페이지</>,
       },
     ],
   },

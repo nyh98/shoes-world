@@ -8,23 +8,15 @@ import { getData } from '../../backEnd/fireBase';
 export default function WishListData() {
   const { isLogin } = useContext(loginState);
   const { uid } = useParams();
-  const { isLoading, error, data } = useQuery(
-    'wishList',
-    () => getData('users', uid ? uid : ''),
-    {}
+  const { isLoading, error, data } = useQuery('wishList', () =>
+    getData('users', uid ? uid : '')
   );
 
-  if (!isLogin || uid !== isLogin.uid) {
-    return <Navigate to={'/'} />;
-  }
+  if (!isLogin || uid !== isLogin.uid) return <Navigate to={'/'} />;
 
-  if (isLoading) {
-    return <>로딩중</>;
-  }
+  if (isLoading) return <>로딩중</>;
 
-  if (error) {
-    return <>에러페이지</>;
-  }
+  if (error) return <>에러페이지</>;
 
   return (
     <div>

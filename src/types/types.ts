@@ -9,9 +9,17 @@ export interface LoginContextDefault {
   setLogin: Function;
 }
 
-interface User {
+export interface User {
   admin: boolean;
   uid: string;
   userName: string;
   userProfileURL: string;
+}
+
+export interface Item {
+  itemName: string;
+  brand: string;
+  imgUrl: string;
+  price: string;
+  itemId: string;
 }
