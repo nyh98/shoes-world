@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { LoginContextDefault, Props } from '../types/types';
+import { LoginContextDefault, Props, User } from '../types/types';
 
 export const loginState = createContext<LoginContextDefault>({
   isLogin: null,
@@ -7,7 +7,7 @@ export const loginState = createContext<LoginContextDefault>({
 });
 
 export default function LoginContext({ children }: Props) {
-  const [isLogin, setLogin] = useState(null);
+  const [isLogin, setLogin] = useState<User | null>(null);
 
   useEffect(() => {
     const getUser = localStorage.getItem('user');

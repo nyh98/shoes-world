@@ -1,3 +1,8 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
 .img-style {
   width: var(--button-width);
   height: var(--button-height);

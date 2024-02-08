@@ -13,115 +13,9 @@ export default function NikeItems() {
 
   if (error) return <>에러 페이지</>;
 
-  const item = data?.shoes[0];
-
   return (
     <div className={styles.container}>
-      <ItemBox
-        key={item.itemId}
-        itemId={item.itemId}
-        itemName={item.itemName}
-        brand={item.brand}
-        imgUrl={item.imgUrl}
-        price={item.price}
-      />
-      <ItemBox
-        key={item.itemId}
-        itemId={item.itemId}
-        itemName={item.itemName}
-        brand={item.brand}
-        imgUrl={item.imgUrl}
-        price={item.price}
-      />
-      <ItemBox
-        key={item.itemId}
-        itemId={item.itemId}
-        itemName={item.itemName}
-        brand={item.brand}
-        imgUrl={item.imgUrl}
-        price={item.price}
-      />
-      <ItemBox
-        key={item.itemId}
-        itemId={item.itemId}
-        itemName={item.itemName}
-        brand={item.brand}
-        imgUrl={item.imgUrl}
-        price={item.price}
-      />
-      <ItemBox
-        key={item.itemId}
-        itemId={item.itemId}
-        itemName={item.itemName}
-        brand={item.brand}
-        imgUrl={item.imgUrl}
-        price={item.price}
-      />
-      <ItemBox
-        key={item.itemId}
-        itemId={item.itemId}
-        itemName={item.itemName}
-        brand={item.brand}
-        imgUrl={item.imgUrl}
-        price={item.price}
-      />
-      <ItemBox
-        key={item.itemId}
-        itemId={item.itemId}
-        itemName={item.itemName}
-        brand={item.brand}
-        imgUrl={item.imgUrl}
-        price={item.price}
-      />
-      <ItemBox
-        key={item.itemId}
-        itemId={item.itemId}
-        itemName={item.itemName}
-        brand={item.brand}
-        imgUrl={item.imgUrl}
-        price={item.price}
-      />
-      <ItemBox
-        key={item.itemId}
-        itemId={item.itemId}
-        itemName={item.itemName}
-        brand={item.brand}
-        imgUrl={item.imgUrl}
-        price={item.price}
-      />
-      <ItemBox
-        key={item.itemId}
-        itemId={item.itemId}
-        itemName={item.itemName}
-        brand={item.brand}
-        imgUrl={item.imgUrl}
-        price={item.price}
-      />
-      <ItemBox
-        key={item.itemId}
-        itemId={item.itemId}
-        itemName={item.itemName}
-        brand={item.brand}
-        imgUrl={item.imgUrl}
-        price={item.price}
-      />
-      <ItemBox
-        key={item.itemId}
-        itemId={item.itemId}
-        itemName={item.itemName}
-        brand={item.brand}
-        imgUrl={item.imgUrl}
-        price={item.price}
-      />
-      <ItemBox
-        key={item.itemId}
-        itemId={item.itemId}
-        itemName={item.itemName}
-        brand={item.brand}
-        imgUrl={item.imgUrl}
-        price={item.price}
-      />
-      {/* {data?.shoes.map((item: any) => {
+      {data?.shoes.map((item: any) => {
         return (
           <ItemBox
             key={item.itemId}
@@ -132,7 +26,7 @@ export default function NikeItems() {
             price={item.price}
           />
         );
-      })} */}
+      })}
     </div>
   );
 }

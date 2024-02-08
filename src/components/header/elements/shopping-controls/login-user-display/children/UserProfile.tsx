@@ -4,7 +4,7 @@ import styles from './UserStyle.module.css';
 
 export default function UserProfile({ userProfileURL }: Props) {
   return (
-    <div>
+    <div className={styles.container}>
       <img src={userProfileURL} alt="" className={styles['img-style']} />
     </div>
   );
