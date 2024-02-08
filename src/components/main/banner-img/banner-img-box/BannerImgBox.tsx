@@ -8,7 +8,7 @@ export default function BannerImgBox({
   return (
     <article>
       <img src={bannerImgUrl} alt="brandImg" />
-      <div>{brandName}</div>
+      <p>{brandName}</p>
     </article>
   );
 }

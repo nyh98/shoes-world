@@ -6,6 +6,7 @@
   --button-hover-transform: scale(1.4);
   --header-font: 'Times New Roman', Times, serif;
   --header-font-weight: 800;
+  --swiper-theme-color: black !important;
 }
 
 .img-size {
