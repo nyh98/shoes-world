@@ -1,11 +1,10 @@
 import React from 'react';
-import BannerImgs from '../../components/main/banner-img/banner-img-box/BannerImgBox';
-import BannerImg from '../../components/main/banner-img/BannerImg';
+import BannerImgSlider from '../../components/main/banner-img/BannerImgSlider';
 
 export default function Home() {
   return (
     <div>
-      <BannerImg />
+      <BannerImgSlider />
     </div>
   );
 }

@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import styles from './BannerImg.module.css';
+import styles from './BannerImgSlider.module.css';
 import { useQuery } from 'react-query';
 import { getData } from '../../../backEnd/fireBase';
-import { BannerImgItem } from '../../../types/types';
-import BannerImgBox from './banner-img-box/BannerImgBox';
 
-export default function BannerImg() {
+export default function BannerImgSlider() {
   const { isLoading, error, data } = useQuery('bannerImgs', () =>
     getData('items', 'bannerImgs')
   );
@@ -16,13 +14,13 @@ export default function BannerImg() {
 
   return (
     <div className={styles.container}>
-      {data?.urls.map((item: BannerImgItem) => (
+      {/* {data?.urls.map((item: BannerImgItem) => (
         <BannerImgBox
           brandName={item.brandName}
           bannerImgUrl={item.url}
           key={item.brandName}
         />
-      ))}
+      ))} */}
     </div>
   );
 }
