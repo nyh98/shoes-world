@@ -20,7 +20,7 @@ export default function Home() {
       <BannerImgSlider />
       <div className={styles.container}>
         {data?.urls.map((item: BannerImgItem) => (
-          <Link to={'/'} className={styles.navigater}>
+          <Link to={`/shop/${item.brandName}`} className={styles.navigater}>
             <img src={item.url} alt="brandLogo" className={styles.img} />
           </Link>
         ))}

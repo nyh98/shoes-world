@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  text-align: center;
+}
+
+.navigater {
+  flex: 1;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}

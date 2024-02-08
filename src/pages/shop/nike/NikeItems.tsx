@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from 'react-query';
-import { getData } from '../../backEnd/fireBase';
-import ItemBox from '../../components/main/item-box/ItemBox';
+import { getData } from '../../../backEnd/fireBase';
+import ItemBox from '../../../components/main/item-box/ItemBox';
 import styles from './NikeItems.module.css';
 
 export default function NikeItems() {

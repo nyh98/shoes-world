@@ -7,8 +7,8 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import LoginContext from './context/LoginContext';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import WishListData from './pages/wish-list-data/WishListData';
-import NikeItems from './pages/nike/NikeItems';
 import Home from './pages/home/Home';
+import Shop from './pages/shop/Shop';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -43,6 +43,16 @@ const router = createBrowserRouter([
       {
         path: '/itemDetail/:itemId',
         element: <>아이템 상세페이지</>,
+      },
+      {
+        path: '/shop',
+        element: <Shop />,
+        children: [
+          {
+            path: '/shop/:brandName',
+            element: <>브랜드관</>,
+          },
+        ],
       },
     ],
   },
