@@ -23,3 +23,9 @@ export interface Item {
   price: string;
   itemId: string;
 }
+
+export interface BannerImgItem {
+  brandName: string;
+  bannerImgUrl?: string;
+  url?: string;
+}

@@ -8,6 +8,7 @@ import LoginContext from './context/LoginContext';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import WishListData from './pages/wish-list-data/WishListData';
 import NikeItems from './pages/nike/NikeItems';
+import Home from './pages/home/Home';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <NikeItems />,
+        element: <Home />,
       },
       {
         path: '/wishList/:uid',
