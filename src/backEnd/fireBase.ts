@@ -5,6 +5,8 @@ import {
   doc,
   getDoc,
   collection,
+  updateDoc,
+  arrayUnion,
 } from 'firebase/firestore';
 import {
   GoogleAuthProvider,
@@ -13,6 +15,7 @@ import {
   signOut,
 } from 'firebase/auth';
 import { v4 as uuidv4 } from 'uuid';
+import { Item } from '../types/types';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -30,24 +33,23 @@ const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
 
+export async function addToAllItems(
+  title: string,
+  table: string,
+  item: unknown
+) {
+  await updateDoc(doc(db, title, table), {
+    allItems: arrayUnion(item),
+  });
+}
+
 export async function getData(title: string, table: string) {
   const titleRef = collection(db, title);
   return await getDoc(doc(titleRef, table)).then(res => res.data());
 }
 
 export async function setData() {
-  await setDoc(doc(db, 'items', 'Jordan'), {
-    shoes: [
-      {
-        brandName: 'Jordan',
-        imgUrl:
-          'https://firebasestorage.googleapis.com/v0/b/shoes-world-b390f.appspot.com/o/items%2FJordan%201%20Retro%20High%20OG%20Chicago%202022.jpg?alt=media&token=08227b57-9a3f-499d-b22a-50d4bdf98532',
-        itemId: uuidv4(),
-        itemName: 'Jordan 1 Retro High OG Chicago 2022',
-        price: '382000',
-      },
-    ],
-  });
+  await setDoc(doc(db, 'items', 'Jordan'), {});
 }
 
 export async function login() {

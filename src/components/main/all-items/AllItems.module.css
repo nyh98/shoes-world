@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   padding: 0px 10px;
+  gap: 10px;
 }
 
 @media (min-width: 640px) {
@@ -12,7 +13,7 @@
 
 @media (min-width: 800px) {
   .container {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     padding: 0;
   }
 }
