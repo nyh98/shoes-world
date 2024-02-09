@@ -10,6 +10,7 @@ import WishListData from './pages/wish-list-data/WishListData';
 import Home from './pages/home/Home';
 import Shop from './pages/shop/Shop';
 import ItemList from './pages/shop/item-list/ItemList';
+import ItemEditor from './pages/item-editor/ItemEditor';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/ItemEditor/:uid',
-        element: <>아이템 관리 페이지</>,
+        element: <ItemEditor />,
       },
       {
         path: '/itemDetail/:itemId',
