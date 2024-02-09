@@ -1,4 +1,5 @@
 import { initializeApp } from 'firebase/app';
+import { getStorage, ref, getDownloadURL, uploadBytes } from 'firebase/storage';
 import {
   getFirestore,
   setDoc,
@@ -15,7 +16,6 @@ import {
   signOut,
 } from 'firebase/auth';
 import { v4 as uuidv4 } from 'uuid';
-import { Item } from '../types/types';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -32,6 +32,27 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
+const storage = getStorage();
+
+export async function addFileToStorage(itemName: string, file: File) {
+  // onChange={e => {
+  //   console.log(e.target.files);
+
+  //   if (e.target.files) {
+  //     const file = e.target.files[0];
+  //     addFileToStorage(file);
+  //   }
+  // }}
+  await uploadBytes(ref(storage, `items/${itemName}`), file).catch(e =>
+    console.log(e)
+  );
+}
+
+export async function getImgUrl(itemName: string) {
+  await getDownloadURL(ref(storage, `items/${itemName}.jpg`))
+    .catch(e => console.log(e))
+    .then(url => console.log(url));
+}
 
 export async function addToAllItems(
   title: string,
