@@ -3,11 +3,13 @@ import { useQuery } from 'react-query';
 import { getData } from '../../../backEnd/fireBase';
 import ItemBox from '../../../components/main/item-box/ItemBox';
 import styles from './ItemList.module.css';
-import { DataProps, Item } from '../../../types/types';
+import { Item } from '../../../types/types';
+import { useParams } from 'react-router-dom';
 
-export default function ItemList({ brandNaem }: DataProps) {
-  const { isLoading, error, data } = useQuery(['items', brandNaem], () =>
-    getData('items', brandNaem)
+export default function ItemList() {
+  const { brandName } = useParams();
+  const { isLoading, error, data } = useQuery(['items', brandName], () =>
+    getData('items', brandName ? brandName : '')
   );
 
   if (isLoading) return <>로딩 페이지</>;

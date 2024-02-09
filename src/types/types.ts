@@ -29,7 +29,3 @@ export interface BannerImgItem {
   bannerImgUrl?: string;
   url?: string;
 }
-
-export interface DataProps {
-  brandNaem: string;
-}

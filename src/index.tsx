@@ -9,6 +9,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import WishListData from './pages/wish-list-data/WishListData';
 import Home from './pages/home/Home';
 import Shop from './pages/shop/Shop';
+import ItemList from './pages/shop/item-list/ItemList';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: '/shop/:brandName',
-            element: <>브랜드관</>,
+            element: <ItemList />,
           },
         ],
       },
