@@ -1,13 +1,13 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import { getData } from '../../../backEnd/fireBase';
-import ItemBox from '../../../components/main/item-box/ItemBox';
-import styles from './NikeItems.module.css';
-import { DataProps, Item } from '../../../types/types';
+import ItemBox from '../item-box/ItemBox';
+import { Item } from '../../../types/types';
+import styles from './AllItems.module.css';
 
-export default function NikeItems({ queryValue }: DataProps) {
-  const { isLoading, error, data } = useQuery(['items', queryValue], () =>
-    getData('items', queryValue)
+export default function AllItems() {
+  const { isLoading, error, data } = useQuery('allItems', () =>
+    getData('items', 'specific')
   );
 
   if (isLoading) return <>로딩 페이지</>;
@@ -16,15 +16,14 @@ export default function NikeItems({ queryValue }: DataProps) {
 
   return (
     <div className={styles.container}>
-      {data?.shoes.map((item: Item) => {
+      {data?.allItems.map((item: Item) => {
         return (
           <ItemBox
-            key={item.itemId}
-            itemId={item.itemId}
             itemName={item.itemName}
             brandName={item.brandName}
             imgUrl={item.imgUrl}
             price={item.price}
+            itemId={item.itemId}
           />
         );
       })}

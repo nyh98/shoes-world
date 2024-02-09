@@ -18,7 +18,7 @@ export interface User {
 
 export interface Item {
   itemName: string;
-  brand: string;
+  brandName: string;
   imgUrl: string;
   price: string;
   itemId: string;
@@ -28,4 +28,8 @@ export interface BannerImgItem {
   brandName: string;
   bannerImgUrl?: string;
   url?: string;
+}
+
+export interface DataProps {
+  queryValue: string;
 }

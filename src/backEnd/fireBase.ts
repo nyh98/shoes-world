@@ -12,6 +12,7 @@ import {
   signInWithPopup,
   signOut,
 } from 'firebase/auth';
+import { v4 as uuidv4 } from 'uuid';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -35,9 +36,17 @@ export async function getData(title: string, table: string) {
 }
 
 export async function setData() {
-  await setDoc(doc(db, 'title', 'testWeb'), {
-    item: 'test12331',
-    price: 'test122213',
+  await setDoc(doc(db, 'items', 'Jordan'), {
+    shoes: [
+      {
+        brandName: 'Jordan',
+        imgUrl:
+          'https://firebasestorage.googleapis.com/v0/b/shoes-world-b390f.appspot.com/o/items%2FJordan%201%20Retro%20High%20OG%20Chicago%202022.jpg?alt=media&token=08227b57-9a3f-499d-b22a-50d4bdf98532',
+        itemId: uuidv4(),
+        itemName: 'Jordan 1 Retro High OG Chicago 2022',
+        price: '382000',
+      },
+    ],
   });
 }
 

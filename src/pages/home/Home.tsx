@@ -5,6 +5,7 @@ import styles from './Home.module.css';
 import { useQuery } from 'react-query';
 import { getData } from '../../backEnd/fireBase';
 import { BannerImgItem } from '../../types/types';
+import AllItems from '../../components/main/all-items/AllItems';
 
 export default function Home() {
   const { isLoading, error, data } = useQuery('brandLogo', () =>
@@ -25,6 +26,7 @@ export default function Home() {
           </Link>
         ))}
       </div>
+      <AllItems />
     </div>
   );
 }

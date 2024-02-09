@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function ItemBox({
   itemName,
-  brand,
+  brandName,
   imgUrl,
   price,
   itemId,
@@ -14,7 +14,7 @@ export default function ItemBox({
     <article className={styles.container}>
       <Link to={`/itemDetail/${itemId}`} className={styles['link-style']}>
         <img src={imgUrl} alt="shoes" className={styles['img-size']} />
-        <div className={styles['brand-font']}>{brand}</div>
+        <div className={styles['brand-font']}>{brandName}</div>
         <div>{itemName}</div>
         <div className={styles['price-font']}>{price}</div>
       </Link>
