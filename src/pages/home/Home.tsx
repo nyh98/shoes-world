@@ -6,7 +6,6 @@ import { useQuery } from 'react-query';
 import { getData } from '../../backEnd/fireBase';
 import { BannerImgItem } from '../../types/types';
 import AllItems from '../../components/main/all-items/AllItems';
-import Footer from '../../components/footer/Footer';
 
 export default function Home() {
   const { isLoading, error, data } = useQuery('brandLogo', () =>
@@ -32,7 +31,6 @@ export default function Home() {
         ))}
       </div>
       <AllItems />
-      <Footer />
     </div>
   );
 }
