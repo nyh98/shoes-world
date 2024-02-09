@@ -31,5 +31,5 @@ export interface BannerImgItem {
 }
 
 export interface DataProps {
-  queryValue: string;
+  brandNaem: string;
 }

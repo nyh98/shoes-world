@@ -2,12 +2,12 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import { getData } from '../../../backEnd/fireBase';
 import ItemBox from '../../../components/main/item-box/ItemBox';
-import styles from './NikeItems.module.css';
+import styles from './ItemList.module.css';
 import { DataProps, Item } from '../../../types/types';
 
-export default function NikeItems({ queryValue }: DataProps) {
-  const { isLoading, error, data } = useQuery(['items', queryValue], () =>
-    getData('items', queryValue)
+export default function ItemList({ brandNaem }: DataProps) {
+  const { isLoading, error, data } = useQuery(['items', brandNaem], () =>
+    getData('items', brandNaem)
   );
 
   if (isLoading) return <>로딩 페이지</>;
