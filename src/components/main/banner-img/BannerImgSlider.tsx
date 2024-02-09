@@ -31,7 +31,7 @@ export default function BannerImgSlider() {
       className={styles.swiper}
     >
       {data?.urls.map((item: BannerImgItem) => (
-        <SwiperSlide className={styles['swiper-slide']}>
+        <SwiperSlide className={styles['swiper-slide']} key={item.brandName}>
           <BannerImgBox brandName={item.brandName} bannerImgUrl={item.url} />
         </SwiperSlide>
       ))}
