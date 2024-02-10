@@ -9,14 +9,17 @@ export default function ItemBox({
   imgUrl,
   price,
   itemId,
+  size,
 }: Item) {
   return (
     <article className={styles.container}>
       <Link to={`/itemDetail/${itemId}`} className={styles['link-style']}>
         <img src={imgUrl} alt="shoes" className={styles['img-size']} />
         <div className={styles['brand-font']}>{brandName}</div>
-        <div>{itemName}</div>
-        <div className={styles['price-font']}>{price}</div>
+        <div className={styles['name-font']}>{itemName}</div>
+        <div className={styles['price-font']}>
+          {Number(price).toLocaleString('ko-kr')}
+        </div>
       </Link>
     </article>
   );
