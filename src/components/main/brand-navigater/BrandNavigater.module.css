@@ -5,6 +5,15 @@
 
 .navigater {
   flex: 1;
+  margin: 0;
+  padding: 16px 0;
+}
+
+.current-navigater {
+  flex: 1;
+  font-weight: 1000;
+  background-color: var(--item-background-color);
+  border-radius: 1rem;
 }
 
 .link {
