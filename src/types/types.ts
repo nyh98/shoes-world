@@ -1,7 +1,14 @@
+import { Dispatch, SetStateAction } from 'react';
+
 export interface Props {
   children?: React.ReactNode;
   userName?: string;
   userProfileURL?: string | undefined;
+}
+
+export interface UploadStateProps {
+  uploadItem?: UploadItem;
+  setUploadItem: Dispatch<SetStateAction<UploadItem>>;
 }
 
 export interface LoginContextDefault {
