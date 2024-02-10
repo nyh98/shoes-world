@@ -85,9 +85,23 @@ export async function setItemData(itemId: string, item: Item) {
   });
 }
 
+export async function setUser(uid: string) {
+  await setDoc(doc(db, 'users', uid), {
+    wishList: [],
+    shoppingBasket: [],
+  });
+}
+
 export async function login() {
   return await signInWithPopup(auth, provider) //
     .then(async result => {
+      const validateNewUser = await getData('users', result.user.uid);
+      //신규 회원일시 데이터 생성
+      if (!validateNewUser) {
+        await setUser(result.user.uid);
+      }
+
+      //어드민 여부 검증
       const admins = await getData('users', 'admins');
       const user = {
         userName: result.user.displayName,
