@@ -1,6 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
-import { addToWishList, getData, login } from '../../backEnd/fireBase';
+import {
+  addToShoppingBasket,
+  addToWishList,
+  getData,
+  login,
+} from '../../backEnd/fireBase';
 import { useParams } from 'react-router-dom';
 import { Item } from '../../types/types';
 import styels from './ItemDetail.module.css';
@@ -38,7 +43,7 @@ export default function ItemDetail() {
       alert('옵션을 선택해 주세요');
       return;
     }
-    await addToWishList(isLogin.uid, uploadItem);
+    await addToShoppingBasket(isLogin.uid, uploadItem);
     alert('장바구니에 추가 되었습니다');
     window.location.reload();
   };
