@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styles from './ItemEditor.module.css';
 import { Item, UploadItem } from '../../types/types';
 import {
@@ -13,8 +13,11 @@ import InputItemName from '../../components/main/add-item/InputItemName';
 import InputBrandName from '../../components/main/add-item/InputBrandName';
 import InputPrice from '../../components/main/add-item/InputPrice';
 import InputSize from '../../components/main/add-item/InputSize';
+import { loginState } from '../../context/LoginContext';
+import { Navigate } from 'react-router-dom';
 
 export default function ItemEditor() {
+  const { isLogin } = useContext(loginState);
   const [uploadItem, setUploadItem] = useState<UploadItem>({
     file: null,
     itemName: '',
@@ -57,6 +60,8 @@ export default function ItemEditor() {
       });
     }
   };
+
+  if (!isLogin?.admin) return <Navigate to={'/'} />;
 
   return (
     <>

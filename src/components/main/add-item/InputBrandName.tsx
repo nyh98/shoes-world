@@ -4,7 +4,7 @@ import { UploadStateProps } from '../../../types/types';
 export default function InputBrandName({ setUploadItem }: UploadStateProps) {
   return (
     <p>
-      브랜드명
+      브랜드명{' '}
       <select
         onChange={e =>
           setUploadItem(prev => ({ ...prev, brandName: e.target.value }))
