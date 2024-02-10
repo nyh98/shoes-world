@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import { getData } from '../../../backEnd/fireBase';
-import ItemBox from '../../../components/main/item-box/ItemBox';
+import ItemBox from '../item-box/ItemBox';
 import styles from './ItemList.module.css';
 import { Item } from '../../../types/types';
 import { useParams } from 'react-router-dom';

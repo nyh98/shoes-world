@@ -35,14 +35,6 @@ const auth = getAuth();
 const storage = getStorage();
 
 export async function addFileToStorage(imgName: string, file: File) {
-  // onChange={e => {
-  //   console.log(e.target.files);
-
-  //   if (e.target.files) {
-  //     const file = e.target.files[0];
-  //     addFileToStorage(file);
-  //   }
-  // }}
   await uploadBytes(ref(storage, `items/${imgName}`), file).catch(e =>
     console.log(e)
   );
@@ -58,14 +50,26 @@ export async function getImgUrl(imgName: string) {
   );
 }
 
-export async function addToAllItems(title: string, table: string, item: Item) {
-  await updateDoc(doc(db, title, table), {
+export async function addToAllItems(item: Item) {
+  await updateDoc(doc(db, 'items', 'specific'), {
     allItems: arrayUnion(item),
   });
 }
 
-export async function addNewItme(title: string, table: string, item: Item) {
-  await updateDoc(doc(db, title, table), {
+export async function addToShoppingBasket(uid: string, item: Item) {
+  await updateDoc(doc(db, 'users', uid), {
+    shoppingBasket: arrayUnion(item),
+  });
+}
+
+export async function addToWishList(uid: string, item: Item) {
+  await updateDoc(doc(db, 'users', uid), {
+    wishList: arrayUnion(item),
+  });
+}
+
+export async function addNewItmeToBrand(table: string, item: Item) {
+  await updateDoc(doc(db, 'items', table), {
     shoes: arrayUnion(item),
   });
 }
@@ -75,8 +79,10 @@ export async function getData(title: string, table: string) {
   return await getDoc(doc(titleRef, table)).then(res => res.data());
 }
 
-export async function setData() {
-  await setDoc(doc(db, 'items', 'Jordan'), {});
+export async function setItemData(itemId: string, item: Item) {
+  await setDoc(doc(db, 'items', itemId), {
+    detail: item,
+  });
 }
 
 export async function login() {

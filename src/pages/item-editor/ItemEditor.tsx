@@ -3,7 +3,7 @@ import styles from './ItemEditor.module.css';
 import { Item, UploadItem } from '../../types/types';
 import {
   addFileToStorage,
-  addNewItme,
+  addNewItmeToBrand,
   addToAllItems,
   getImgUrl,
 } from '../../backEnd/fireBase';
@@ -53,8 +53,8 @@ export default function ItemEditor() {
           price: uploadItem.price,
           size: uploadItem.size.sort((a, b) => Number(a) - Number(b)),
         };
-        await addNewItme('items', uploadItem.brandName, item);
-        await addToAllItems('items', 'specific', item);
+        await addNewItmeToBrand(uploadItem.brandName, item);
+        await addToAllItems(item);
         alert('제품 등록 완료');
         window.location.reload();
       });

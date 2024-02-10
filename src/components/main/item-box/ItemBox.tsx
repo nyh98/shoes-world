@@ -9,7 +9,6 @@ export default function ItemBox({
   imgUrl,
   price,
   itemId,
-  size,
 }: Item) {
   return (
     <article className={styles.container}>

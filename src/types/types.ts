@@ -24,6 +24,7 @@ export interface User {
 }
 
 export interface Item {
+  [key: string]: string | string[];
   itemName: string;
   brandName: string;
   imgUrl: string;

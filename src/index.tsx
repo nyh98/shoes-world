@@ -9,8 +9,9 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import WishListData from './pages/wish-list-data/WishListData';
 import Home from './pages/home/Home';
 import Shop from './pages/shop/Shop';
-import ItemList from './pages/shop/item-list/ItemList';
+import ItemList from './components/main/item-list/ItemList';
 import ItemEditor from './pages/item-editor/ItemEditor';
+import ItemDetail from './pages/item-detail/ItemDetail';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/itemDetail/:itemId',
-        element: <>아이템 상세페이지</>,
+        element: <ItemDetail />,
       },
       {
         path: '/shop',
