@@ -22,10 +22,20 @@ export interface Item {
   imgUrl: string;
   price: string;
   itemId: string;
+  size: string[];
 }
 
 export interface BannerImgItem {
   brandName: string;
   bannerImgUrl?: string;
   url?: string;
+}
+
+export interface UploadItem {
+  [key: string]: null | File | string[] | string;
+  file: null | File;
+  itemName: string;
+  brandName: string;
+  price: string;
+  size: string[];
 }

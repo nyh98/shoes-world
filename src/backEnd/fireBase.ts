@@ -15,7 +15,7 @@ import {
   signInWithPopup,
   signOut,
 } from 'firebase/auth';
-import { v4 as uuidv4 } from 'uuid';
+import { Item } from '../types/types';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -34,7 +34,7 @@ const provider = new GoogleAuthProvider();
 const auth = getAuth();
 const storage = getStorage();
 
-export async function addFileToStorage(itemName: string, file: File) {
+export async function addFileToStorage(imgName: string, file: File) {
   // onChange={e => {
   //   console.log(e.target.files);
 
@@ -43,24 +43,30 @@ export async function addFileToStorage(itemName: string, file: File) {
   //     addFileToStorage(file);
   //   }
   // }}
-  await uploadBytes(ref(storage, `items/${itemName}`), file).catch(e =>
+  await uploadBytes(ref(storage, `items/${imgName}`), file).catch(e =>
     console.log(e)
   );
 }
 
-export async function getImgUrl(itemName: string) {
-  await getDownloadURL(ref(storage, `items/${itemName}.jpg`))
-    .catch(e => console.log(e))
-    .then(url => console.log(url));
+/**
+ * @imgName
+ * 확장자명 포함
+ */
+export async function getImgUrl(imgName: string) {
+  return await getDownloadURL(ref(storage, `items/${imgName}`)).catch(e =>
+    console.log(e)
+  );
 }
 
-export async function addToAllItems(
-  title: string,
-  table: string,
-  item: unknown
-) {
+export async function addToAllItems(title: string, table: string, item: Item) {
   await updateDoc(doc(db, title, table), {
     allItems: arrayUnion(item),
+  });
+}
+
+export async function addNewItme(title: string, table: string, item: Item) {
+  await updateDoc(doc(db, title, table), {
+    shoes: arrayUnion(item),
   });
 }
 

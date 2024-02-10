@@ -26,6 +26,7 @@ export default function ItemList() {
             itemName={item.itemName}
             brandName={item.brandName}
             imgUrl={item.imgUrl}
+            size={item.size}
             price={item.price}
           />
         );
