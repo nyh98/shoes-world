@@ -7,7 +7,7 @@ import {
   login,
 } from '../../backEnd/fireBase';
 import { useParams } from 'react-router-dom';
-import { Item } from '../../types/types';
+import { Item, User } from '../../types/types';
 import styels from './ItemDetail.module.css';
 import { loginState } from '../../context/LoginContext';
 
@@ -44,6 +44,10 @@ export default function ItemDetail() {
       return;
     }
     await addToShoppingBasket(isLogin.uid, uploadItem);
+    setLogin((res: User) => ({
+      ...res,
+      shoppingBasket: [...res.shoppingBasket, uploadItem],
+    }));
     alert('장바구니에 추가 되었습니다');
     window.location.reload();
   };

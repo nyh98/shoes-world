@@ -16,6 +16,12 @@ export default function LoginContext({ children }: Props) {
     }
   }, []);
 
+  useEffect(() => {
+    if (isLogin) {
+      localStorage.setItem('user', JSON.stringify(isLogin));
+    }
+  }, [isLogin]);
+
   return (
     <loginState.Provider value={{ isLogin, setLogin }}>
       {children}

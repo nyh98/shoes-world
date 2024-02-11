@@ -6,12 +6,13 @@ import reportWebVitals from './reportWebVitals';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import LoginContext from './context/LoginContext';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import WishListData from './pages/wish-list-data/WishListData';
 import Home from './pages/home/Home';
 import Shop from './pages/shop/Shop';
 import ItemList from './components/main/item-list/ItemList';
 import ItemEditor from './pages/item-editor/ItemEditor';
 import ItemDetail from './pages/item-detail/ItemDetail';
+import WishListItems from './pages/wish-list-data/WishListItems';
+import ShoppingBasketItems from './pages/shopping-basket/ShoppingBasketItems';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,11 +34,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/wishList/:uid',
-        element: <WishListData />,
+        element: <WishListItems />,
       },
       {
         path: '/shoppingList/:uid',
-        element: <>장바구니 페이지</>,
+        element: <ShoppingBasketItems />,
       },
       {
         path: '/ItemEditor/:uid',

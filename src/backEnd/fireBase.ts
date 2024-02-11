@@ -111,7 +111,6 @@ export async function login() {
         wishList: validateNewUser ? validateNewUser.wishList : [],
         shoppingBasket: validateNewUser ? validateNewUser.shoppingBasket : [],
       };
-      localStorage.setItem('user', JSON.stringify(user));
       return user;
     })
     .catch(error => {
