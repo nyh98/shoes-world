@@ -23,6 +23,11 @@ export default function WishList() {
 
   return (
     <Link to={`/wishList/${isLogin?.uid}`} className={styles.button}>
+      {isLogin.wishList.length >= 1 ? (
+        <div className={styles['item-count']}>{isLogin.wishList.length}</div>
+      ) : (
+        ''
+      )}
       <FaRegHeart className={styles['img-size']} />
     </Link>
   );

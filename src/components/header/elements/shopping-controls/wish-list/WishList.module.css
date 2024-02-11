@@ -3,6 +3,7 @@
   transition: var(--button-transition);
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .button:hover {
@@ -13,4 +14,17 @@
 .img-size {
   width: var(--button-width);
   height: var(--button-height);
+}
+
+.item-count {
+  position: absolute;
+  z-index: 10;
+  width: 15px;
+  height: 15px;
+  border-radius: 9999px;
+  right: -7px;
+  top: -5px;
+  font-size: xx-small;
+  text-align: center;
+  background-color: var(--item-background-color);
 }

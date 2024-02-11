@@ -13,7 +13,7 @@ import { loginState } from '../../context/LoginContext';
 
 export default function ItemDetail() {
   const { itemId } = useParams();
-  const { isLogin } = useContext(loginState);
+  const { isLogin, setLogin } = useContext(loginState);
   const { isLoading, error, data } = useQuery('itemDetail', () =>
     getData('items', itemId ? itemId : '')
   );
@@ -28,7 +28,7 @@ export default function ItemDetail() {
 
   const addToWishListHandler = async () => {
     if (!isLogin) {
-      login();
+      login().then(res => setLogin(res));
       return;
     }
     await addToWishList(isLogin.uid, uploadItem);
@@ -36,7 +36,7 @@ export default function ItemDetail() {
 
   const addToShoppingBasketHandler = async () => {
     if (!isLogin) {
-      login();
+      login().then(res => setLogin(res));
       return;
     }
     if (!uploadItem.size[0]) {

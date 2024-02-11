@@ -108,6 +108,8 @@ export async function login() {
         userProfileURL: result.user.photoURL,
         uid: result.user.uid,
         admin: admins?.ids.includes(result.user.uid),
+        wishList: validateNewUser ? validateNewUser.wishList : [],
+        shoppingBasket: validateNewUser ? validateNewUser.shoppingBasket : [],
       };
       localStorage.setItem('user', JSON.stringify(user));
       return user;

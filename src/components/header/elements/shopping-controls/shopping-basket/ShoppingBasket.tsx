@@ -23,6 +23,13 @@ export default function ShoppingBasket() {
 
   return (
     <Link to={`/shoppingList/${isLogin?.uid}`} className={styles.button}>
+      {isLogin.shoppingBasket.length >= 1 ? (
+        <div className={styles['item-count']}>
+          {isLogin.shoppingBasket.length}
+        </div>
+      ) : (
+        ''
+      )}
       <CgShoppingCart className={styles['img-size']} />
     </Link>
   );

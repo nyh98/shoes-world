@@ -21,6 +21,8 @@ export interface User {
   uid: string;
   userName: string;
   userProfileURL: string;
+  wishList: Item[];
+  shoppingBasket: Item[];
 }
 
 export interface Item {
