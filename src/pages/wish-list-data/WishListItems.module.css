@@ -5,6 +5,10 @@
   gap: 10px;
 }
 
+.header {
+  text-align: center;
+}
+
 @media (min-width: 640px) {
   .container {
     grid-template-columns: repeat(3, 1fr);

@@ -1,11 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
-import {
-  addToShoppingBasket,
-  addToWishList,
-  getData,
-  login,
-} from '../../backEnd/fireBase';
+import { addToShoppingBasket, getData, login } from '../../backEnd/fireBase';
 import { useParams } from 'react-router-dom';
 import { Item, User } from '../../types/types';
 import styels from './ItemDetail.module.css';
@@ -14,7 +9,7 @@ import { loginState } from '../../context/LoginContext';
 export default function ItemDetail() {
   const { itemId } = useParams();
   const { isLogin, setLogin } = useContext(loginState);
-  const { isLoading, error, data } = useQuery('itemDetail', () =>
+  const { isLoading, error, data } = useQuery(['itemDetail', itemId], () =>
     getData('items', itemId ? itemId : '')
   );
   const [uploadItem, setUploadItem] = useState<Item>({
@@ -26,27 +21,26 @@ export default function ItemDetail() {
     size: [''],
   });
 
-  const addToWishListHandler = async () => {
+  const addToShoppingBasketHandler = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.currentTarget.disabled = true;
     if (!isLogin) {
       login().then(res => setLogin(res));
-      return;
-    }
-    await addToWishList(isLogin.uid, uploadItem);
-  };
-
-  const addToShoppingBasketHandler = async () => {
-    if (!isLogin) {
-      login().then(res => setLogin(res));
+      e.currentTarget.disabled = false;
       return;
     }
     if (!uploadItem.size[0]) {
       alert('옵션을 선택해 주세요');
+      e.currentTarget.disabled = false;
       return;
     }
     await addToShoppingBasket(isLogin.uid, uploadItem);
-    setLogin((res: User) => ({
-      ...res,
-      shoppingBasket: [...res.shoppingBasket, uploadItem],
+    const updateUser = await getData('users', isLogin.uid);
+    setLogin((prev: User) => ({
+      ...prev,
+      shoppingBasket: updateUser?.shoppingBasket,
+      wishList: updateUser?.wishList,
     }));
     alert('장바구니에 추가 되었습니다');
     window.location.reload();
