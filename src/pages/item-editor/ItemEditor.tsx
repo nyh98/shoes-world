@@ -29,16 +29,19 @@ export default function ItemEditor() {
   const submitHandler = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
+    e.currentTarget.disabled = true;
     //제품 정보 검사
     for (let attribute in uploadItem) {
       if (!uploadItem[attribute]) {
         alert('누락된 제품 정보가 있습니다');
+        e.currentTarget.disabled = false;
         return;
       }
     }
     //사이즈 값이 있는지 검사
     if (!uploadItem.size[0]) {
       alert('사이즈를 지정해주세요');
+      e.currentTarget.disabled = false;
       return;
     }
 
