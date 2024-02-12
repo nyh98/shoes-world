@@ -85,6 +85,16 @@ export async function setItemData(itemId: string, item: Item) {
   });
 }
 
+export async function setShoppingBasket(uid: string, item: unknown) {
+  await setDoc(
+    doc(db, 'users', uid),
+    {
+      shoppingBasket: item,
+    },
+    { merge: true }
+  );
+}
+
 export async function setUser(uid: string) {
   await setDoc(doc(db, 'users', uid), {
     wishList: [],

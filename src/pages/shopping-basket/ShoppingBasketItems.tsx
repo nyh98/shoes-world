@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { loginState } from '../../context/LoginContext';
-import ItemBox from '../../components/main/item-box/ItemBox';
 import { Item } from '../../types/types';
 import styles from './ShoppingBasketItems.module.css';
+import OrderItemBox from '../../components/main/order-item-box/OrderItemBox';
 
 export default function ShoppingBasketItems() {
   const { isLogin } = useContext(loginState);
@@ -14,18 +14,23 @@ export default function ShoppingBasketItems() {
   return (
     <>
       <h3 className={styles.header}>내 장바구니</h3>
+      <div className={styles.header}>
+        {isLogin.shoppingBasket.length === 0 ? '목록이 없습니다' : ''}
+      </div>
       <div className={styles.container}>
         {isLogin.shoppingBasket.map((item: Item) => (
-          <ItemBox
+          <OrderItemBox
             itemId={item.itemId}
             brandName={item.brandName}
             itemName={item.itemName}
             price={item.price}
             imgUrl={item.imgUrl}
             size={item.size}
+            quantity={item.quantity}
           />
         ))}
       </div>
+      <p className={styles.buy}>주문 하기</p>
     </>
   );
 }

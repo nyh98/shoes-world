@@ -1,6 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
-import { addToShoppingBasket, getData, login } from '../../backEnd/fireBase';
+import {
+  addToShoppingBasket,
+  getData,
+  login,
+  setShoppingBasket,
+} from '../../backEnd/fireBase';
 import { useParams } from 'react-router-dom';
 import { Item, User } from '../../types/types';
 import styels from './ItemDetail.module.css';
@@ -19,6 +24,7 @@ export default function ItemDetail() {
     price: '',
     itemId: '',
     size: [''],
+    quantity: 1,
   });
 
   const addToShoppingBasketHandler = async (
@@ -35,6 +41,27 @@ export default function ItemDetail() {
       e.currentTarget.disabled = false;
       return;
     }
+    const currentUser = await getData('users', isLogin.uid);
+    const itemArr = [...currentUser?.shoppingBasket];
+    const index = itemArr.findIndex(
+      (item: Item) =>
+        item.itemId === uploadItem.itemId && item.size[0] === uploadItem.size[0]
+    );
+
+    //기존에 있던 아이템이면 수량 증가
+    if (index !== -1) {
+      itemArr[index].quantity++;
+      await setShoppingBasket(isLogin.uid, itemArr);
+      const updateUser = await getData('users', isLogin.uid);
+      setLogin((prev: User) => ({
+        ...prev,
+        shoppingBasket: updateUser?.shoppingBasket,
+        wishList: updateUser?.wishList,
+      }));
+      alert('장바구니에 추가 되었습니다');
+      window.location.reload();
+      return;
+    }
     await addToShoppingBasket(isLogin.uid, uploadItem);
     const updateUser = await getData('users', isLogin.uid);
     setLogin((prev: User) => ({
@@ -49,15 +76,15 @@ export default function ItemDetail() {
   useEffect(() => {
     //데이터 로드시 장바구니에 담기 전 셋팅
     if (data) {
-      setUploadItem(prev => ({
-        ...prev,
+      setUploadItem({
         itemName: data.detail.itemName,
         brandName: data.detail.brandName,
         imgUrl: data.detail.imgUrl,
         price: data.detail.price,
         itemId: data.detail.itemId,
         size: [''],
-      }));
+        quantity: 1,
+      });
     }
   }, [data]);
 

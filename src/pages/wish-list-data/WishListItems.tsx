@@ -23,6 +23,10 @@ export default function WishListItems() {
   return (
     <>
       <h3 className={styles.header}>찜 목록</h3>
+      <div className={styles.header}>
+        {isLogin.wishList.length === 0 ? '목록이 없습니다' : ''}
+      </div>
+
       <div className={styles.container}>
         {isLogin.wishList.map((item: Item) => (
           <ItemBox
