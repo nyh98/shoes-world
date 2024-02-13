@@ -14,7 +14,23 @@ export default function OrderItemBox({
 }: Item) {
   const { isLogin, setLogin } = useContext(loginState);
 
-  const increaseQuantity = (
+  const deleteItemHandler = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    if (isLogin) {
+      const item = [...isLogin.shoppingBasket];
+      const index = item.findIndex(
+        item => item.itemId === itemId && item.size[0] === size[0]
+      );
+      if (index !== -1) {
+        item.splice(index, 1);
+        setLogin((prev: User) => ({ ...prev, shoppingBasket: item }));
+        setShoppingBasket(isLogin.uid, item);
+      }
+    }
+  };
+
+  const increaseQuantityHandler = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     if (isLogin) {
@@ -30,7 +46,7 @@ export default function OrderItemBox({
     }
   };
 
-  const decreaseQuantity = (
+  const decreaseQuantityHandler = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     if (isLogin) {
@@ -55,21 +71,26 @@ export default function OrderItemBox({
           <div>{Number(price).toLocaleString('ko-kr')}</div>
         </div>
       </div>
-      <div className={styles['quantity-container']}>
-        <button
-          className={styles['quantity-button']}
-          disabled={quantity !== undefined && quantity <= 1 ? true : false}
-          onClick={decreaseQuantity}
-        >
-          -
+      <div className={styles['count-container']}>
+        <button className={styles['delete-button']} onClick={deleteItemHandler}>
+          x
         </button>
-        <div>{quantity ? quantity + '' : ''}</div>
-        <button
-          className={styles['quantity-button']}
-          onClick={increaseQuantity}
-        >
-          +
-        </button>
+        <div className={styles['quantity-container']}>
+          <button
+            className={styles['quantity-button']}
+            disabled={quantity !== undefined && quantity <= 1 ? true : false}
+            onClick={decreaseQuantityHandler}
+          >
+            -
+          </button>
+          <div>{quantity ? quantity + '' : ''}</div>
+          <button
+            className={styles['quantity-button']}
+            onClick={increaseQuantityHandler}
+          >
+            +
+          </button>
+        </div>
       </div>
     </article>
   );
