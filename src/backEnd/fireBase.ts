@@ -15,7 +15,7 @@ import {
   signInWithPopup,
   signOut,
 } from 'firebase/auth';
-import { Item } from '../types/types';
+import { Item, ItemBasic } from '../types/types';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -62,10 +62,16 @@ export async function addToShoppingBasket(uid: string, item: Item) {
   });
 }
 
-export async function addToWishList(uid: string, item: Item) {
-  await updateDoc(doc(db, 'users', uid), {
-    wishList: arrayUnion(item),
-  });
+export async function setToWishList(uid: string, item: ItemBasic[]) {
+  await setDoc(
+    doc(db, 'users', uid),
+    {
+      wishList: item,
+    },
+    {
+      merge: true,
+    }
+  );
 }
 
 export async function addNewItmeToBrand(table: string, item: Item) {

@@ -1,22 +1,12 @@
 import React, { useContext } from 'react';
 import { loginState } from '../../context/LoginContext';
 import { Navigate, useParams } from 'react-router-dom';
-import { Item } from '../../types/types';
 import ItemBox from '../../components/main/item-box/ItemBox';
 import styles from './WishListItems.module.css';
-import { addToWishList, login } from '../../backEnd/fireBase';
 
 export default function WishListItems() {
-  const { isLogin, setLogin } = useContext(loginState);
+  const { isLogin } = useContext(loginState);
   const { uid } = useParams();
-
-  const addToWishListHandler = async () => {
-    if (!isLogin) {
-      login().then(res => setLogin(res));
-      return;
-    }
-    // await addToWishList(isLogin.uid, uploadItem);
-  };
 
   if (!isLogin || uid !== isLogin.uid) return <Navigate to={'/'} />;
 
@@ -28,14 +18,14 @@ export default function WishListItems() {
       </div>
 
       <div className={styles.container}>
-        {isLogin.wishList.map((item: Item) => (
+        {isLogin.wishList.map(item => (
           <ItemBox
+            key={item.itemId}
             itemId={item.itemId}
             brandName={item.brandName}
             itemName={item.itemName}
             price={item.price}
             imgUrl={item.imgUrl}
-            size={item.size}
           />
         ))}
       </div>

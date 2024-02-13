@@ -24,7 +24,6 @@ export default function AllItems() {
             imgUrl={item.imgUrl}
             price={item.price}
             itemId={item.itemId}
-            size={item.size}
             key={item.itemId}
           />
         );

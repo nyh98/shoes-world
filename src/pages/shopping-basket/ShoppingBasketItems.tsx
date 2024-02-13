@@ -21,6 +21,7 @@ export default function ShoppingBasketItems() {
       <div className={styles.container}>
         {isLogin.shoppingBasket.map((item: Item) => (
           <OrderItemBox
+            key={item.size[0]}
             itemId={item.itemId}
             brandName={item.brandName}
             itemName={item.itemName}
