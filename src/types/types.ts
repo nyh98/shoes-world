@@ -26,14 +26,14 @@ export interface User {
 }
 
 export interface Item {
-  [key: string]: string | string[] | Number | undefined;
+  [key: string]: string | string[] | number | undefined;
   itemName: string;
   brandName: string;
   imgUrl: string;
   price: string;
   itemId: string;
   size: string[];
-  quantity?: Number;
+  quantity?: number;
 }
 
 export interface BannerImgItem {

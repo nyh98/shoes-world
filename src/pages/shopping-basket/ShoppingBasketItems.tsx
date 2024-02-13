@@ -4,6 +4,7 @@ import { loginState } from '../../context/LoginContext';
 import { Item } from '../../types/types';
 import styles from './ShoppingBasketItems.module.css';
 import OrderItemBox from '../../components/main/order-item-box/OrderItemBox';
+import PriceCalculrator from '../../components/main/price-calculrator/PriceCalculrator';
 
 export default function ShoppingBasketItems() {
   const { isLogin } = useContext(loginState);
@@ -30,6 +31,7 @@ export default function ShoppingBasketItems() {
           />
         ))}
       </div>
+      <PriceCalculrator />
       <p className={styles.buy}>주문 하기</p>
     </>
   );

@@ -17,5 +17,6 @@
   text-align: center;
   cursor: pointer;
   border-radius: 8px;
-  background-color: var(--item-background-color);
+  color: white;
+  background-color: #e27575;
 }

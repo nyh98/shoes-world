@@ -41,8 +41,7 @@ export default function ItemDetail() {
       e.currentTarget.disabled = false;
       return;
     }
-    const currentUser = await getData('users', isLogin.uid);
-    const itemArr = [...currentUser?.shoppingBasket];
+    const itemArr = [...isLogin.shoppingBasket];
     const index = itemArr.findIndex(
       (item: Item) =>
         item.itemId === uploadItem.itemId && item.size[0] === uploadItem.size[0]
@@ -50,24 +49,20 @@ export default function ItemDetail() {
 
     //기존에 있던 아이템이면 수량 증가
     if (index !== -1) {
-      itemArr[index].quantity++;
+      itemArr[index].quantity!++;
       await setShoppingBasket(isLogin.uid, itemArr);
-      const updateUser = await getData('users', isLogin.uid);
       setLogin((prev: User) => ({
         ...prev,
-        shoppingBasket: updateUser?.shoppingBasket,
-        wishList: updateUser?.wishList,
+        shoppingBasket: itemArr,
       }));
       alert('장바구니에 추가 되었습니다');
       window.location.reload();
       return;
     }
     await addToShoppingBasket(isLogin.uid, uploadItem);
-    const updateUser = await getData('users', isLogin.uid);
     setLogin((prev: User) => ({
       ...prev,
-      shoppingBasket: updateUser?.shoppingBasket,
-      wishList: updateUser?.wishList,
+      shoppingBasket: [...itemArr, uploadItem],
     }));
     alert('장바구니에 추가 되었습니다');
     window.location.reload();
