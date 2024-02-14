@@ -7,13 +7,14 @@ import { getData } from '../../backEnd/fireBase';
 import { BannerImgItem } from '../../types/types';
 import AllItems from '../../components/main/all-items/AllItems';
 import ErrorPage from '../error/ErrorPage';
+import HomeLoading from '../loading/home-loading/HomeLoading';
 
 export default function Home() {
   const { isLoading, error, data } = useQuery('brandLogo', () =>
     getData('items', 'brandLogo')
   );
 
-  if (isLoading) return <>로딩 페이지</>;
+  if (isLoading) return <HomeLoading />;
 
   if (error) return <ErrorPage />;
 

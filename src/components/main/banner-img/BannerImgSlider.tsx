@@ -15,7 +15,7 @@ export default function BannerImgSlider() {
     getData('items', 'bannerImgs')
   );
 
-  if (isLoading) return <>로딩 페이지</>;
+  if (isLoading) return <></>;
 
   if (error) return <ErrorPage />;
 

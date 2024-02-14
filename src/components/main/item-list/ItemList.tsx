@@ -6,6 +6,7 @@ import styles from './ItemList.module.css';
 import { Item } from '../../../types/types';
 import { useParams } from 'react-router-dom';
 import ErrorPage from '../../../pages/error/ErrorPage';
+import ItemLoading from '../../../pages/loading/item-loading/ItemLoading';
 
 export default function ItemList() {
   const { brandName } = useParams();
@@ -13,7 +14,7 @@ export default function ItemList() {
     getData('items', brandName ? brandName : '')
   );
 
-  if (isLoading) return <>로딩 페이지</>;
+  if (isLoading) return <ItemLoading />;
 
   if (error) return <ErrorPage />;
 
