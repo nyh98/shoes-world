@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import ErrorPage from '../../../pages/error/ErrorPage';
 
 export default function BannerImgSlider() {
   const { isLoading, error, data } = useQuery('bannerImgs', () =>
@@ -16,7 +17,7 @@ export default function BannerImgSlider() {
 
   if (isLoading) return <>로딩 페이지</>;
 
-  if (error) return <>에러 페이지</>;
+  if (error) return <ErrorPage />;
 
   return (
     <Swiper

@@ -13,6 +13,7 @@ import styles from './ItemDetail.module.css';
 import { loginState } from '../../context/LoginContext';
 import { IoIosHeartEmpty } from 'react-icons/io';
 import { IoMdHeart } from 'react-icons/io';
+import ErrorPage from '../error/ErrorPage';
 
 export default function ItemDetail() {
   const { itemId } = useParams();
@@ -144,7 +145,7 @@ export default function ItemDetail() {
 
   if (isLoading) return <>로딩페이지</>;
 
-  if (error) return <>에러 페이지</>;
+  if (error) return <ErrorPage />;
 
   return (
     <div className={styles.parent}>

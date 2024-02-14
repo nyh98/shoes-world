@@ -5,6 +5,7 @@ import ItemBox from '../item-box/ItemBox';
 import styles from './ItemList.module.css';
 import { Item } from '../../../types/types';
 import { useParams } from 'react-router-dom';
+import ErrorPage from '../../../pages/error/ErrorPage';
 
 export default function ItemList() {
   const { brandName } = useParams();
@@ -14,7 +15,7 @@ export default function ItemList() {
 
   if (isLoading) return <>로딩 페이지</>;
 
-  if (error) return <>에러 페이지</>;
+  if (error) return <ErrorPage />;
 
   return (
     <div className={styles.container}>

@@ -6,6 +6,7 @@ import { useQuery } from 'react-query';
 import { getData } from '../../backEnd/fireBase';
 import { BannerImgItem } from '../../types/types';
 import AllItems from '../../components/main/all-items/AllItems';
+import ErrorPage from '../error/ErrorPage';
 
 export default function Home() {
   const { isLoading, error, data } = useQuery('brandLogo', () =>
@@ -14,7 +15,7 @@ export default function Home() {
 
   if (isLoading) return <>로딩 페이지</>;
 
-  if (error) return <>에러 페이지</>;
+  if (error) return <ErrorPage />;
 
   return (
     <div className={styles.parent}>

@@ -4,6 +4,7 @@ import { getData } from '../../../backEnd/fireBase';
 import ItemBox from '../item-box/ItemBox';
 import { Item } from '../../../types/types';
 import styles from './AllItems.module.css';
+import ErrorPage from '../../../pages/error/ErrorPage';
 
 export default function AllItems() {
   const { isLoading, error, data } = useQuery('allItems', () =>
@@ -12,7 +13,7 @@ export default function AllItems() {
 
   if (isLoading) return <>로딩 페이지</>;
 
-  if (error) return <>에러 페이지</>;
+  if (error) return <ErrorPage />;
 
   return (
     <div className={styles.container}>
