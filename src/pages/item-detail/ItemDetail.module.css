@@ -1,6 +1,7 @@
 .parent {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .container {
@@ -15,11 +16,20 @@
   flex: 1;
 }
 
+.wish-button {
+  position: absolute;
+  left: 4px;
+  top: 2px;
+  cursor: pointer;
+  z-index: 10;
+}
+
 .button-parent {
   display: flex;
   justify-content: center;
   margin-top: 10px;
 }
+
 .button {
   width: 80%;
 }
@@ -28,6 +38,11 @@
   aspect-ratio: 1/1;
   width: 100%;
   background-color: var(--item-background-color);
+}
+
+.wish-img {
+  width: 20px;
+  height: 20px;
 }
 
 @media (min-width: 768px) {

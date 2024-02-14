@@ -5,11 +5,14 @@ import {
   getData,
   login,
   setShoppingBasket,
+  setToWishList,
 } from '../../backEnd/fireBase';
 import { useParams } from 'react-router-dom';
 import { Item, User } from '../../types/types';
-import styels from './ItemDetail.module.css';
+import styles from './ItemDetail.module.css';
 import { loginState } from '../../context/LoginContext';
+import { IoIosHeartEmpty } from 'react-icons/io';
+import { IoMdHeart } from 'react-icons/io';
 
 export default function ItemDetail() {
   const { itemId } = useParams();
@@ -26,6 +29,62 @@ export default function ItemDetail() {
     size: [''],
     quantity: 1,
   });
+
+  const wishListHandler = async (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    if (!isLogin) {
+      login().then(res => setLogin(res));
+      return;
+    }
+
+    const itemArr = [...isLogin.wishList];
+    const index = itemArr.findIndex(item => item.itemId === itemId);
+    //찜목록에 없으면 추가
+    if (index === -1) {
+      itemArr.push({
+        itemId: uploadItem.itemId,
+        brandName: uploadItem.brandName,
+        imgUrl: uploadItem.imgUrl,
+        price: uploadItem.price,
+        itemName: uploadItem.itemName,
+      });
+      setToWishList(isLogin.uid, itemArr);
+      setLogin((prev: User) => ({
+        ...prev,
+        wishList: itemArr,
+      }));
+      return;
+    }
+
+    //찜목록에 있으면 삭제
+    if (index >= 0) {
+      itemArr.splice(index, 1);
+      setToWishList(isLogin.uid, itemArr);
+      setLogin((prev: User) => ({
+        ...prev,
+        wishList: itemArr,
+      }));
+    }
+  };
+
+  function printWishListImg() {
+    //빈 하트
+    if (!isLogin) {
+      return <IoIosHeartEmpty className={styles['wish-img']} />;
+    }
+
+    const index = isLogin.wishList.findIndex(item => item.itemId === itemId);
+    //꽉 찬 하트
+    if (index !== -1) {
+      return <IoMdHeart className={styles['wish-img']} />;
+    }
+
+    //빈 하트
+    if (index === -1) {
+      return <IoIosHeartEmpty className={styles['wish-img']} />;
+    }
+  }
 
   const addToShoppingBasketHandler = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -88,13 +147,16 @@ export default function ItemDetail() {
   if (error) return <>에러 페이지</>;
 
   return (
-    <div className={styels.parent}>
+    <div className={styles.parent}>
       <img
         src={data?.detail.imgUrl}
         alt="item-img"
-        className={styels['img-size']}
+        className={styles['img-size']}
       />
-      <div className={styels.container}>
+      <div className={styles['wish-button']} onClick={wishListHandler}>
+        {printWishListImg()}
+      </div>
+      <div className={styles.container}>
         <h3>{data?.detail.itemName}</h3>
         <div>{data?.detail.brandName}</div>
         <p>{Number(data?.detail.price).toLocaleString('ko-kr')}원</p>
@@ -112,9 +174,9 @@ export default function ItemDetail() {
             ))}
           </optgroup>
         </select>
-        <div className={styels['button-parent']}>
+        <div className={styles['button-parent']}>
           <button
-            className={styels.button}
+            className={styles.button}
             onClick={addToShoppingBasketHandler}
           >
             장바구니
