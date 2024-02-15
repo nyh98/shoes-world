@@ -6,6 +6,7 @@ import {
   addNewItmeToBrand,
   addToAllItems,
   getImgUrl,
+  setItemData,
 } from '../../backEnd/fireBase';
 import { v4 as uuidv4 } from 'uuid';
 import InputFile from '../../components/main/add-item/InputFile';
@@ -57,6 +58,7 @@ export default function ItemEditor() {
           size: uploadItem.size.sort((a, b) => Number(a) - Number(b)),
         };
         await addNewItmeToBrand(uploadItem.brandName, item);
+        await setItemData(item.itemId, item);
         await addToAllItems(item);
         alert('제품 등록 완료');
         window.location.reload();
