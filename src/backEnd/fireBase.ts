@@ -14,6 +14,7 @@ import {
   getAuth,
   signInWithPopup,
   signOut,
+  onAuthStateChanged,
 } from 'firebase/auth';
 import { Item, ItemBasic } from '../types/types';
 
@@ -140,4 +141,24 @@ export async function login() {
 
 export async function logout() {
   await signOut(auth).catch(e => console.log(e));
+}
+
+export function onUserStateChange(callback: Function) {
+  onAuthStateChanged(auth, async user => {
+    if (user) {
+      const admins = await getData('users', 'admins');
+      const data = await getData('users', user.uid);
+      const userState = {
+        userName: user.displayName,
+        userProfileURL: user.photoURL,
+        uid: user.uid,
+        admin: admins?.ids.includes(user.uid),
+        wishList: data ? data.wishList : [],
+        shoppingBasket: data ? data.shoppingBasket : [],
+      };
+      callback(userState);
+    } else {
+      callback(user);
+    }
+  });
 }

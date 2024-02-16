@@ -171,7 +171,9 @@ export default function ItemDetail() {
               옵션
             </option>
             {data?.detail.size.map((item: string) => (
-              <option value={item}>{item}</option>
+              <option key={item} value={item}>
+                {item}
+              </option>
             ))}
           </optgroup>
         </select>

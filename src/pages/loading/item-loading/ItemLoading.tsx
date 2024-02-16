@@ -5,8 +5,8 @@ export default function ItemLoading() {
 
   return (
     <div className={styles.container}>
-      {arr.map(_ => (
-        <div>
+      {arr.map((_, i) => (
+        <div key={i}>
           <div className={styles['img-size']}></div>
           <div className={styles.brand}></div>
           <div className={styles['item-name']}></div>
