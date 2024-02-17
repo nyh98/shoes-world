@@ -28,3 +28,11 @@
   text-align: center;
   background-color: var(--item-background-color);
 }
+
+@media (min-width: 1280px) {
+  .item-count {
+    width: 20px;
+    height: 20px;
+    font-size: small;
+  }
+}

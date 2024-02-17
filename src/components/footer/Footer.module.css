@@ -24,3 +24,9 @@
     padding: 0;
   }
 }
+
+@media (min-width: 1280px) {
+  .font {
+    font-size: small;
+  }
+}

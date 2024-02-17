@@ -5,4 +5,5 @@
   justify-content: space-between;
   border-bottom: solid 1px;
   padding: 0 1rem;
+  font-size: var(--desktop-font-size);
 }

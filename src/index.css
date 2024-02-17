@@ -8,11 +8,8 @@
   --header-font-weight: 800;
   --swiper-theme-color: black !important;
   --item-background-color: #e2e2e2;
-}
-
-.img-size {
-  width: var(--button-width);
-  height: var(--button-height);
+  --desktop-font-size: medium;
+  --detail-font-size: small;
 }
 
 body {
@@ -28,6 +25,15 @@ body {
 #root {
   width: 100%;
   height: 100%;
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --desktop-font-size: x-large;
+    --button-width: 30px;
+    --button-height: 30px;
+    --detail-font-size: medium;
+  }
 }
 
 @media (min-width: 768px) {

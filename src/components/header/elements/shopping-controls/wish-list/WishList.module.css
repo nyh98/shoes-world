@@ -22,9 +22,17 @@
   width: 15px;
   height: 15px;
   border-radius: 9999px;
-  right: -7px;
+  right: -9px;
   top: -5px;
   font-size: xx-small;
   text-align: center;
   background-color: var(--item-background-color);
+}
+
+@media (min-width: 1280px) {
+  .item-count {
+    width: 20px;
+    height: 20px;
+    font-size: small;
+  }
 }

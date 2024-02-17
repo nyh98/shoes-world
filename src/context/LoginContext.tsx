@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { LoginContextDefault, Props, User } from '../types/types';
-import { getData, onUserStateChange } from '../backEnd/fireBase';
+import { onUserStateChange } from '../backEnd/fireBase';
 
 export const loginState = createContext<LoginContextDefault>({
   isLogin: null,
