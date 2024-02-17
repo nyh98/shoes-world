@@ -12,10 +12,6 @@
   padding: 20px;
 }
 
-.font {
-  flex: 1;
-}
-
 .wish-button {
   position: absolute;
   left: 4px;
@@ -32,6 +28,10 @@
 
 .button {
   width: 80%;
+}
+
+.option {
+  height: 30px;
 }
 
 .img-size {
@@ -53,5 +53,11 @@
   .img-size {
     max-width: 45%;
     border-radius: 1rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    font-size: x-large;
   }
 }

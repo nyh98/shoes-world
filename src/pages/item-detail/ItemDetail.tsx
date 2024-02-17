@@ -18,7 +18,7 @@ import ErrorPage from '../error/ErrorPage';
 export default function ItemDetail() {
   const { itemId } = useParams();
   const { isLogin, setLogin } = useContext(loginState);
-  const { isLoading, error, data } = useQuery(['itemDetail', itemId], () =>
+  const { error, data } = useQuery(['itemDetail', itemId], () =>
     getData('items', itemId ? itemId : '')
   );
   const [uploadItem, setUploadItem] = useState<Item>({
@@ -143,8 +143,6 @@ export default function ItemDetail() {
     }
   }, [data]);
 
-  if (isLoading) return <>로딩페이지</>;
-
   if (error) return <ErrorPage />;
 
   return (
@@ -162,6 +160,7 @@ export default function ItemDetail() {
         <div>{data?.detail.brandName}</div>
         <p>{Number(data?.detail.price).toLocaleString('ko-kr')}원</p>
         <select
+          className={styles.option}
           onChange={e =>
             setUploadItem(prev => ({ ...prev, size: [e.target.value] }))
           }
